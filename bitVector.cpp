@@ -1,11 +1,13 @@
 #include <iostream>
+#include <climits>
 #include "bitVector.h"
+
 
 using namespace std;
 
 int bitVector::id = 0;
 
-bitVector::bitVector(int s):size(s), charVectorSize((s + sizeof(char) - 1)/sizeof(char)), vid(++id)
+bitVector::bitVector(int s):size(s), charVectorSize((s + CHAR_BIT - 1)/CHAR_BIT), vid(++id)
 {
     // Note, exception handling for memorey allocation was not implemented
     // as we assumed the inavalability of STL
@@ -57,15 +59,15 @@ int bitVector::setValue(int i, bool v)
 {
     if(i < size && i >= 0)
     {
-        char & elm = data[i/8];
+        char & elm = data[i/CHAR_BIT];
         if(v == true)
         {
-            elm = elm | (1 << (i%8));
+            elm = elm | (1 << (i%CHAR_BIT));
             cout << "object with ID: "<< this->vid << " has set bit number " << i << endl;
         }
         else
         {
-            elm = elm & ~(1 << (i%8));       
+            elm = elm & ~(1 << (i%CHAR_BIT));       
             cout << "object with ID: "<< this->vid << " has unset bit number " << i << endl;
         }
         return 0;
@@ -87,7 +89,7 @@ int bitVector::Value(int i)
 {
     if(i < size && i >= 0)
     {
-        bool bitValue = data[i/8] & (1 << (i%8));
+        bool bitValue = data[i/CHAR_BIT] & (1 << (i%CHAR_BIT));
         cout << "object with ID: "<< this->vid << " will return the value " << bitValue << " from index " << i << endl;
         return (bitValue);
     }
