@@ -52,20 +52,31 @@ int main()
 
     //Testing getting bit out of bounds
     cout << "Testing getting bit out of bounds\n";
+    cout << "Using Value: ";
     c.Value(10000); 
+    cout << "Using [] operator: ";
+    c[1000];
     cout << "_____________________________________\n\n";
 
     //Testing setting a bit and getting it
     cout << "Testing setting a bit and getting it\n";
     c.setValue(3,1);
+    cout << "Using Value: ";
     bool val = c.Value(3);
+    cout << "Returned Value: " << val << endl;
+    cout << "Using [] operator: ";
+    val = c[3];
     cout << "Returned Value: " << val << endl;
     cout << "_____________________________________\n\n";
 
     //Testing unsetting the same bit and getting it
     cout << "Testing unsetting the same bit and getting it\n";
     c.setValue(3,0);
+    cout << "Using Value: ";
     val = c.Value(3);
+    cout << "Returned Value: " << val << endl;
+    cout << "Using [] operator: ";
+    val = c[3];
     cout << "Returned Value: " << val << endl;
     cout << "_____________________________________\n\n";
 

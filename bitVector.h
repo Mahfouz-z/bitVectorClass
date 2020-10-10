@@ -11,13 +11,16 @@ class bitVector
     int size;
     int vid;
     static int id;
+    
+
   public:
     bitVector(int s = 32);
-    bitVector (const bitVector& a);
-    bitVector (bitVector&& a);
+    bitVector (const bitVector&);
+    bitVector (bitVector&&);
     ~bitVector();
-    int setValue(int i, bool v);
-    int Value(int i);
+    int setValue(int, bool);
+    int Value(int) const;
+    int operator[](int) const; 
 };
  
 #endif

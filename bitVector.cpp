@@ -50,7 +50,10 @@ bitVector::~bitVector()
 {
     cout << "object with ID: "<< this->vid << " running destructor!\n";
     if(data!=nullptr)
+    {
         delete [] data;
+        data = nullptr;
+    }
     else 
         cout << "\tnothing to delete\n";
 }
@@ -85,7 +88,7 @@ int bitVector::setValue(int i, bool v)
     
 }
 
-int bitVector::Value(int i)
+int bitVector::Value(int i) const
 {
     if(i < size && i >= 0)
     {
@@ -104,3 +107,12 @@ int bitVector::Value(int i)
         return -2;
     }
 }
+
+
+int bitVector::operator[](int i) const
+{
+    cout << "Index, operator called, returning Value function result!\n";
+    return Value(i);    
+}
+
+
